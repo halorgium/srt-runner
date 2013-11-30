@@ -30,7 +30,9 @@ offset = ARGV.shift
 offset = normalize_offset(offset)
 fudge = 2
 
-srt = SRT::File.parse_file(File.open(path))
+contents = File.read(path, mode: "r", encoding: "ISO-8859-1")
+contents.encode!("UTF-8")
+srt = SRT::File.parse(contents)
 
 puts "reading from path #{path.inspect}"
 puts "starting at offset #{offset.inspect}"
