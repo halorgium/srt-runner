@@ -28,7 +28,8 @@ end
 path = ARGV.shift || raise("Provide the path to the .srt file")
 offset = ARGV.shift
 offset = normalize_offset(offset)
-fudge = 2
+fudge = ARGV.shift || 2
+fudge = Float(fudge)
 
 contents = File.read(path, mode: "r", encoding: "ISO-8859-1")
 contents.encode!("UTF-8")
